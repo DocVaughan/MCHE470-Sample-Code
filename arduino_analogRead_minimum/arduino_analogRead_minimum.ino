@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------------
-arduino_basic_analog.ino
+arduino_analogRead_minimum.ino
 
 Bare minimum to get analog data and print to serial monitor
 
