@@ -31,5 +31,5 @@ void loop() {
   // print a random number to the serial monitor
   Serial.println(randomNumber);
   
-  delay(50);          // pause for 50ms
+  delay(500);          // pause for 500ms
 }

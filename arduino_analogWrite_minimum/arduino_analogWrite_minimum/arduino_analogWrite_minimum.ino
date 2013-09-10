@@ -27,7 +27,7 @@ void setup()
 // This runs immediately after setup, looping indefinitely
 void loop()
 {
-  byte duty_cycle = 200;            // the duty cycle, between 0-255 (0-100%)
+  byte duty_cycle = 255;            // the duty cycle, between 0-255 (0-100%)
 
   // analogWrite duty_cycle values from 0 to 255 correspond to duty cycles 0-100%
   analogWrite(ledPin, duty_cycle);  
