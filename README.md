@@ -1,4 +1,4 @@
-MCHE470-Sample-Code
+MCHE470 Sample Code
 ===================
 
 Some sample code used during MCHE 470: Robotics at the University of Louisiana at Lafayette.
