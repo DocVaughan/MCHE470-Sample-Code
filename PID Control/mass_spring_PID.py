@@ -4,6 +4,10 @@
 # mass_spring_PID.py
 #
 # Script to analyze PID control for a spring-mass-damper system
+#
+# NOTE: Plotting is set up for output, not viewing on screen.
+#       So, it will likely be ugly on screen. The saved PDFs should look
+#       better.
 # 
 # Created: 9/17/13 
 #   - Joshua Vaughan 
@@ -15,7 +19,7 @@
 #
 ##########################################################################################
 
-# Simple mass-spring system with Harmonic Forcing
+# Simple mass-spring system
 #                   +---> X
 #                   |
 #   /|     k     +-----+
@@ -77,10 +81,6 @@ xlabel('Time (s)',family='CMU Serif',fontsize=22,weight='bold',labelpad=5)
 ylabel('Position (m)',family='CMU Serif',fontsize=22,weight='bold',labelpad=10)
 
 plot(T,yout,color='blue',linewidth=2,label='Response')
-
-# leg = legend(loc='upper right', fancybox=True)
-# ltext  = leg.get_texts() 
-# setp(ltext,family='CMU Serif',fontsize=16)
 
 # uncomment below save the figure as a high-res pdf in the current folder
 # savefig('OpenLoop_Step_Resp.pdf')
@@ -216,5 +216,5 @@ plot(T_PID,yout_PID,color='blue',linewidth=2,label='Response')
 # Uncomment below to save the figure as a high-res pdf in the current folder
 # savefig('PropIntDerivControl_Step_Resp.pdf')
 
-# show the figure
+# show the figures
 show()
