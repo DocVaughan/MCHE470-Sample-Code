@@ -37,10 +37,10 @@ import control                  # import the control system functions
 rc('text',usetex=True)
 
 m = 1.;             # kg
-k = 20;             # spring constant - N/m
+k = 2;             # spring constant - N/m
 wn = sqrt(k/m)      # Natural Frequency (rad/s)
 
-c = 10;             # damping coeff - N/(m/s)
+c = 2.5;             # damping coeff - N/(m/s)
 z = c/(2*wn*m)      # damping ratio
 
 
@@ -57,7 +57,7 @@ sys = control.tf(num,den);
 
 # Let's start it at t=0.5s for clarity in plotting
 F = zeros(500)  # Define an array of all zeros
-F[50:] = 1      # Make all elements of this array index>50 = 1 (all after 0.5s)
+F[25:] = 1      # Make all elements of this array index>50 = 1 (all after 0.5s)
 
 # run the simulation - utilize the built-in forced_response function
 [T,yout,xout] = control.forced_response(sys,t,F)
@@ -80,13 +80,15 @@ ax.set_axisbelow(True)
 xlabel('Time (s)',family='CMU Serif',fontsize=22,weight='bold',labelpad=5)
 ylabel('Position (m)',family='CMU Serif',fontsize=22,weight='bold',labelpad=10)
 
+ylim(0,1.25)
+
 plot(T,yout,color='blue',linewidth=2,label='Response')
 
 # uncomment below save the figure as a high-res pdf in the current folder
-# savefig('OpenLoop_Step_Resp.pdf')
+# savefig('OpenLoop_Step_Resp_Ziegler.svg')
 
 # show the figure
-# show()
+show()
 
 
 
