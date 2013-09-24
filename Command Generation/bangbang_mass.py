@@ -1,9 +1,9 @@
 #! /usr/bin/env python 
 
 ##########################################################################################
-# mass_spring_PIDproblems.py
+# bangbang_mass.py
 #
-# Script to analyze PID control "problems" for a spring-mass-damper system
+# Script to analyze bang-bang inputs to a simple mass system
 #
 # NOTE: Plotting is set up for output, not viewing on screen.
 #       So, it will likely be ugly on screen. The saved PDFs should look
@@ -78,7 +78,7 @@ ylim(-1.25,1.25)
 plot(t,F,color='blue',linewidth=2,label='Response')
 
 # uncomment below save the figure as a high-res pdf in the current folder
-savefig('BangBang_Force.png')
+savefig('BangBang_Force.svg')
 
 #show the figure
 #show()

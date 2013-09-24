@@ -53,10 +53,11 @@ kp = 12                    # The proportional gain
 kd = 5                     # The derivative gain
 ki = 10                    # The integral gain
 
+
 # Define the closed-loop transfer function
 numPID = [kd,kp,ki]
 denPID = [m,(c + kd),(k + kp),ki]
-sysPID = control.tf(numPID,denPID);
+sysPID = control.tf(numPID,denPID)
 
 
 # Let's start it at t=0.5s for clarity in plotting
@@ -111,7 +112,7 @@ ltext  = leg.get_texts()
 setp(ltext,family='CMU Serif',fontsize=16)
 
 # Uncomment below to save the figure as a high-res pdf in the current folder
-savefig('PIDControl_2Step_Resp.png')
+# savefig('PIDControl_2Step_Resp.pdf')
 
 # show the figures
 # show()
@@ -139,13 +140,12 @@ plot(T_PID,error,color='blue',linewidth=2,label='Error')
 
 xlim(0,3)
 
-
 # leg = legend(loc='upper right', fancybox=True,borderaxespad=0.1)
 # ltext  = leg.get_texts() 
 # setp(ltext,family='CMU Serif',fontsize=16)
 
 # Uncomment below to save the figure as a high-res pdf in the current folder
-savefig('PIDControl_2Step_Resp_Error.png')
+# savefig('PIDControl_2Step_Resp_Error.pdf')
 
 # show the figures
 # show()
@@ -173,18 +173,12 @@ plot(T_PID,error_deriv,color='blue',linewidth=2,label='Error')
 
 xlim(0,3)
 
-# Uncomment below to save the figure as a high-res pdf in the current folder
-savefig('PIDControl_2Step_Resp_ErrorDeriv.png')
-
-# show the figures
-# show()
-
 # leg = legend(loc='upper right', fancybox=True,borderaxespad=0.1)
 # ltext  = leg.get_texts() 
 # setp(ltext,family='CMU Serif',fontsize=16)
 
 # Uncomment below to save the figure as a high-res pdf in the current folder
-# savefig('PIDControl_2Step_Resp_Error.png')
+# savefig('PIDControl_2Step_Resp_ErrorDeriv.pdf')
 
 # show the figures
 # show()
@@ -217,7 +211,7 @@ xlim(0,3)
 # setp(ltext,family='CMU Serif',fontsize=16)
 
 # Uncomment below to save the figure as a high-res pdf in the current folder
-savefig('PIDControl_2Step_Resp_Force.png')
+# savefig('PIDControl_2Step_Resp_Force.pdf')
 
 
 #----- Plot the force
@@ -249,7 +243,54 @@ ltext  = leg.get_texts()
 setp(ltext,family='CMU Serif',fontsize=16)
 
 # Uncomment below to save the figure as a high-res pdf in the current folder
-savefig('PIDControl_2Step_Resp_ForceMeasure.png')
+# savefig('PIDControl_2Step_Resp_ForceMeasure.pdf')
 
 # show the figures
-show()
+# show()
+
+
+# #---- Look at the response - Does it still work?
+# # Define the closed-loop transfer function
+# num = [1]
+# den = [m,c,k]
+# sysDerivMeasure = control.tf(num,den)
+# 
+# # this is not "strictly" correct, but it should give us an idea
+# # run the simulation - utilize the built-in forced_response function
+# [T_meas,yout_meas,xout_meas] = control.forced_response(sysDerivMeasure,T_PID,force,hmax=0.01)
+# 
+# #----- Plot the force
+# # Make the figure pretty, then plot the results
+# #   "pretty" parameters selected based on pdf output, not screen output
+# #   Many of these setting could also be made default by the .matplotlibrc file
+# fig = figure(figsize=(6,4))
+# ax = gca()
+# subplots_adjust(bottom=0.17,left=0.17,top=0.96,right=0.96)
+# setp(ax.get_ymajorticklabels(),family='CMU Serif',fontsize=18)
+# setp(ax.get_xmajorticklabels(),family='CMU Serif',fontsize=18)
+# ax.spines['right'].set_color('none')
+# ax.spines['top'].set_color('none')
+# ax.xaxis.set_ticks_position('bottom')
+# ax.yaxis.set_ticks_position('left')
+# ax.grid(True,linestyle=':',color='0.75')
+# ax.set_axisbelow(True)
+# 
+# xlabel('Time (s)',family='CMU Serif',fontsize=22,weight='bold',labelpad=5)
+# ylabel('Position (m)',family='CMU Serif',fontsize=22,weight='bold',labelpad=5)
+# 
+# plot(T_PID,yout_PID,color='red',linewidth=2,label='Direct Application')
+# plot(T_meas,yout_meas,color='blue',linewidth=2,linestyle='--',label='Derivative on Measurement')
+# 
+# xlim(0,3)
+# ylim(0,1.5)
+# 
+# leg = legend(loc='upper right', fancybox=True,borderaxespad=0.1)
+# ltext  = leg.get_texts() 
+# setp(ltext,family='CMU Serif',fontsize=16)
+# 
+# # Uncomment below to save the figure as a high-res pdf in the current folder
+# # savefig('PIDControl_2Step_Resp_ForceMeasureResp.png')
+# 
+# # show the figures
+# show()
+# 
