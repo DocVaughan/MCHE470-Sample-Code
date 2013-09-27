@@ -4,3 +4,7 @@
 Command Generation/two_mass_spring_MoveDistance.py
 
 PID Control/ZieglerNichols_Example.py
+
+Command Generation/InputShaping.py
+
+Command Generation/InputShaping.pyc
