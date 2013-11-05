@@ -1,5 +1,23 @@
 #! /usr/bin/env python 
  
+# Adapted from http://www.davidhampgonsalves.com/opencv-python-color-tracking/
+
+##########################################################################################
+# WebcamColorTrack_MCHE470_Fall2013.py
+#
+# Script to track red in a webcam image
+#
+# Requires OpenCV
+# 
+# Created: 11/2/13 
+#   - Joshua Vaughan 
+#   - joshua.vaughan@louisiana.edu
+#   - http://www.ucs.louisiana.edu/~jev9637
+#
+# Modified:
+#   *
+#
+########################################################################################## 
 import cv2.cv as cv
 from numpy import *  
 from time import localtime, strftime

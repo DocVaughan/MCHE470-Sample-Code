@@ -1,5 +1,24 @@
 #! /usr/bin/env python 
  
+ 
+##########################################################################################
+# PostColorTrack_MCHE470_Fall2013_cv2.py
+#
+# Script to process Mini-Project 3b videos
+#
+# Requires OpenCV
+# 
+# Created: 11/2/13 
+#   - Joshua Vaughan 
+#   - joshua.vaughan@louisiana.edu
+#   - http://www.ucs.louisiana.edu/~jev9637
+#
+# Modified:
+#   * 11/4/13 - Joshua Vaughan - joshua.vaughan@louisiana.edu
+#       - hard coded video names due to Tkinter file dialog bug
+#
+########################################################################################## 
+ 
 import cv2 as cv2
 import numpy as np
 from time import localtime, strftime, sleep
