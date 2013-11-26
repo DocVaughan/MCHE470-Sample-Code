@@ -36,17 +36,16 @@ import control                  # import the control system functions
 # Uncomment to use LaTeX to process the text in figure
 rc('text',usetex=True)
 
-m = 1.;             # kg
-k = 2;             # spring constant - N/m
+m = 1.              # kg
+k = 2               # spring constant - N/m
 wn = sqrt(k/m)      # Natural Frequency (rad/s)
 
-c = 2.5;             # damping coeff - N/(m/s)
+c = 2.5             # damping coeff - N/(m/s)
 z = c/(2*wn*m)      # damping ratio
 
 
 # Set up simulation parameters
 t = r_[0:5:500j]            # time for simulation, 0-5s with 500 points in-between
-
 
 #-----  Open-Loop input the step response -----------------------------------------------
 #
