@@ -28,11 +28,11 @@ from matplotlib.colors import ListedColormap
 from sklearn import neighbors
 from sklearn.preprocessing import scale
 
-n_neighbors = 21
+n_neighbors = 11
 
 # import some data to play with
-# data = genfromtxt("me2110grades.csv",delimiter=",",skip_header=1)
-data = genfromtxt("vib_fall2012.csv",delimiter=",",skip_header=1)
+data = genfromtxt("me2110grades.csv",delimiter=",",skip_header=1)
+# data = genfromtxt("vib_fall2012.csv",delimiter=",",skip_header=1)
 X = data[:,(0,2)]     # we only take two features at a time
 
 # Normalize/scale the data
@@ -42,7 +42,7 @@ X = data[:,(0,2)]     # we only take two features at a time
 # X = scale(X)
 
 
-# the third column is the grade A=2, B=2, <C=1
+# the fifth column (remember, Python is 0 indexed) is the grade A=2, B=2, <C=1
 y = data[:,4]       
 
 # Get the A data

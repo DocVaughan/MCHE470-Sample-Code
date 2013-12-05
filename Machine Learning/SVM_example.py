@@ -85,7 +85,7 @@ h = .01  # step size in the mesh
 C = 1.0  # SVM regularization parameter
 svc = svm.SVC(kernel='linear', C=C).fit(X, y)
 rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C).fit(X, y)
-poly_svc = svm.SVC(kernel='poly', degree=5, C=C).fit(X, y)
+poly_svc = svm.SVC(kernel='poly', degree=3, C=C).fit(X, y)
 lin_svc = svm.LinearSVC(C=C).fit(X, y)
 
 # create a mesh to plot in
@@ -121,7 +121,7 @@ xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
 
 
 # types are svc, rbf_svc, poly_svc, lin_svc)
-Z = poly_svc.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = svc.predict(np.c_[xx.ravel(), yy.ravel()])
 
 # Put the result into a color plot
 figure()

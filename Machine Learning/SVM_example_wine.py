@@ -122,7 +122,7 @@ xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
 
 
 # types are svc, rbf_svc, poly_svc, lin_svc)
-Z = poly_svc.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = lin_svc.predict(np.c_[xx.ravel(), yy.ravel()])
 
 # Put the result into a color plot
 figure()
