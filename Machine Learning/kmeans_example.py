@@ -45,7 +45,7 @@ np.random.seed(42)
 # import some data to play with
 data = genfromtxt("me2110grades.csv",delimiter=",",skip_header=1)
 # data = genfromtxt("vib_fall2012.csv",delimiter=",",skip_header=1)
-X = data[:,(0,2)]    # we only take two feature at a time
+X = data[:,(0,2)]    # we only take two features at a time
 
 # Normalize/scale the data
 # X[:,0] = 1*X[:,0]/np.max(X[:,0])
@@ -54,7 +54,7 @@ X = data[:,(0,2)]    # we only take two feature at a time
 # X = scale(X)
 
 
-# the third column is the grade A=3, B=2, <C = 1
+# the fifth column is the grade A=3, B=2, <C = 1
 y = data[:,4]    
 
 # Get the A data

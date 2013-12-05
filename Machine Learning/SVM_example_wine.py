@@ -1,9 +1,9 @@
 #! /usr/bin/env python 
 
 ##########################################################################################
-# SVM_example.py
+# SVM_example_wine.py
 #
-# Script to look at an example nearest-SVM classificaiton
+# Script to look at an example nearest-SVM classificaiton for Wine data set
 #
 # Based on: 
 #   http://scikit-learn.org/stable/auto_examples/svm/plot_iris.html
@@ -34,9 +34,8 @@ cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])
 cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
 
 # import some data to play with
-data = genfromtxt("me2110grades.csv",delimiter=",",skip_header=1)
-# data = genfromtxt("vib_fall2012.csv",delimiter=",",skip_header=1)
-X = data[:,(0,2)]    # we only take two features at a time
+data = genfromtxt("wine_data.csv",delimiter=",",skip_header=1)
+X = data[:,(1,11)]    # we only take two features at a time
 
 # Normalize/scale the data
 # X[:,0] = 1*X[:,0]/np.max(X[:,0])
@@ -45,11 +44,11 @@ X = data[:,(0,2)]    # we only take two features at a time
 # X = scale(X)
 
 
-# the third column is the grade A=3, B=2, <C = 1
-y = data[:,4]    
+# the first column is the grade A=3, B=2, <C = 1
+y = data[:,0]    
 
 # Get the A data
-A_itemindex=np.where(y==3)
+A_itemindex=np.where(y==1)
 X_A = X[A_itemindex]
 y_A = y[A_itemindex]
 
@@ -59,21 +58,21 @@ X_B = X[B_itemindex]
 y_B = y[B_itemindex]
 
 # Get the <C data
-C_itemindex=np.where(y==1)
+C_itemindex=np.where(y==3)
 X_C = X[C_itemindex]
 y_C = y[C_itemindex]
 
 # Show the raw data
-plot(X_A[:,0],X_A[:,1],'r*',label='A')
-plot(X_B[:,0],X_B[:,1],'bo',label='B')
-plot(X_C[:,0],X_C[:,1],'kx',label = 'C')
+plot(X_A[:,0],X_A[:,1],'r*',label='Wine 1')
+plot(X_B[:,0],X_B[:,1],'bo',label='Wine 2')
+plot(X_C[:,0],X_C[:,1],'kx',label = 'Wine 3')
 xlim(0.9*min(X[:,0]),1.1*max(X[:,0]))
 ylim(0.9*min(X[:,1]),1.1*max(X[:,1]))
 
 xlabel('Feature 1',fontsize=22,labelpad=5)
 ylabel('Feature 2',fontsize=22,labelpad=10)
 
-leg = legend(loc='upper left', ncol = 1, fancybox=True, borderaxespad=0.2)
+leg = legend(loc='upper left', ncol = 2, fancybox=True, borderaxespad=0.2)
 ltext  = leg.get_texts() 
 setp(ltext,fontsize=16)
 
@@ -85,12 +84,14 @@ h = .01  # step size in the mesh
 C = 1.0  # SVM regularization parameter
 svc = svm.SVC(kernel='linear', C=C).fit(X, y)
 rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C).fit(X, y)
-poly_svc = svm.SVC(kernel='poly', degree=5, C=C).fit(X, y)
+poly_svc = svm.SVC(kernel='poly', degree=3, C=C).fit(X, y)
 lin_svc = svm.LinearSVC(C=C).fit(X, y)
 
 # create a mesh to plot in
-x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+# x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+# y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+x_min, x_max = X[:, 0].min()*0.9, X[:, 0].max()*1.1
+y_min, y_max = X[:, 1].min()*0.9, X[:, 1].max()*1.1
 xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
                      np.arange(y_min, y_max, h))
 
@@ -129,16 +130,16 @@ Z = Z.reshape(xx.shape)
 contourf(xx, yy, Z, cmap=cmap_light)
 
 # Show the raw data
-plot(X_A[:,0],X_A[:,1],'r*',label='A')
-plot(X_B[:,0],X_B[:,1],'bo',label='B')
-plot(X_C[:,0],X_C[:,1],'kx',label = 'C')
+plot(X_A[:,0],X_A[:,1],'r*',label='Wine 1')
+plot(X_B[:,0],X_B[:,1],'bo',label='Wine 2')
+plot(X_C[:,0],X_C[:,1],'kx',label = 'Wine 3')
 xlim(0.9*min(X[:,0]),1.1*max(X[:,0]))
 ylim(0.9*min(X[:,1]),1.1*max(X[:,1]))
 
 xlabel('Feature 1',fontsize=22,labelpad=5)
 ylabel('Feature 2',fontsize=22,labelpad=10)
 
-leg = legend(loc='upper left', ncol = 1, fancybox=True, borderaxespad=0.2)
+leg = legend(loc='upper left', ncol = 2, fancybox=True, borderaxespad=0.2)
 ltext  = leg.get_texts() 
 setp(ltext,fontsize=16)
 
